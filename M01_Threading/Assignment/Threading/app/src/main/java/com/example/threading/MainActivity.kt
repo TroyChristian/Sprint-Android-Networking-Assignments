@@ -1,4 +1,5 @@
 package com.example.threading
+
 //initial commit
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
@@ -14,16 +15,20 @@ import androidx.core.app.TaskStackBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
+lateinit var process : MyAsyncTask
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //MyAsyncTask().execute
+        process = MyAsyncTask()
+        process.execute()
 
+    }
 
-
-        }
-
-
+    override fun onStop() {
+        super.onStop()
+        process.cancel(true)
+    }
 
     fun primes(): Sequence<Long> {
         var i = 0L
@@ -36,41 +41,40 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun isVisible(arg:Boolean){
-        if(arg){progressBar.visibility = View.VISIBLE
+    fun isVisible(arg: Boolean) {
+        if (arg) {
+            progressBar.visibility = View.VISIBLE
+        } else {
+            progressBar.visibility = INVISIBLE
         }
-        else{progressBar.visibility = INVISIBLE}
+    }
 
 
-        class MyAsyncTask : AsyncTask<Unit, Int, String>() {
+   inner  class MyAsyncTask : AsyncTask<Unit, Int, String>() {
         override fun onPreExecute() {
             super.onPreExecute()
-            val progressBar: ProgressBar = progressBar
+
             isVisible(true)
 
         }
 
 
-
         override fun doInBackground(vararg p0: Unit?): String {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            val primeNumbers = primes().take(16000).joinToString(", ")
-
+          return  primes().take(1000).joinToString(", ")
 
 
         }
 
-            override fun onPostExecute(result: String?) {
-                super.onPostExecute(result)
-                isVisible(true)
-              //  text.text = "Primes: $primeNumbers"
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+            isVisible(false)
+             text.text = result
 
 
-            }
+        }
 
     }
-}}
-
+}
 
 
 
