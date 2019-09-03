@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         override fun doInBackground(vararg p0: Unit?): String {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             val primeNumbers = primes().take(16000).joinToString(", ")
-            text.text = "Primes: $primeNumbers"
+
 
 
         }
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             override fun onPostExecute(result: String?) {
                 super.onPostExecute(result)
                 isVisible(true)
-
+              //  text.text = "Primes: $primeNumbers"
 
 
             }
