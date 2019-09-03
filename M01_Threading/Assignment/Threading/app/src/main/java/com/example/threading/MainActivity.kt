@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.app.TaskStackBuilder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,15 +19,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fun isVisible(arg:Boolean){
-            if(arg){progressBar.visibility = VISIBLE
-            }
-            else{progressBar.visibility = INVISIBLE}
 
 
         }
 
-        }
+
 
     fun primes(): Sequence<Long> {
         var i = 0L
@@ -39,26 +36,48 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    val primeNumbers = primes().take(16000).joinToString(", ")
+    fun isVisible(arg:Boolean){
+        if(arg){progressBar.visibility = View.VISIBLE
+        }
+        else{progressBar.visibility = INVISIBLE}
 
-    class MyAsyncTask : AsyncTask<Unit, Int, String>() {
+
+        class MyAsyncTask : AsyncTask<Unit, Int, String>() {
         override fun onPreExecute() {
             super.onPreExecute()
-
-
-        }
-
-        override fun onPostExecute(result: String?) {
-            super.onPostExecute(result)
-
+            val progressBar: ProgressBar = progressBar
+            isVisible(true)
 
         }
+
+
 
         override fun doInBackground(vararg p0: Unit?): String {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            val primeNumbers = primes().take(16000).joinToString(", ")
+            text.text = "Primes: $primeNumbers"
+
+
         }
+
+            override fun onPostExecute(result: String?) {
+                super.onPostExecute(result)
+                isVisible(true)
+
+
+
+            }
+
     }
-}
+}}
+
+
+
+
+
+
+
+
 
 
 
