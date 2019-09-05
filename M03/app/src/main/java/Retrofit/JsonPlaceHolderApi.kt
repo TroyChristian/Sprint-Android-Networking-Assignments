@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.Retrofit
+import retrofit2.http.Query
 
 import java.util.concurrent.TimeUnit
 
@@ -20,11 +21,13 @@ interface JsonPlaceHolderApi {
     fun getEmployees(): Call<List<Employee>>
 
     @GET("employee/{id}")
-    fun getEmployeesById(@Path("id")employeeId:String)
+    fun getEmployeesById(@Path("id")employeeId:String): Call<List<Employee>>
 
     @GET("employee")
-    fun getEmployeeByAge(employeeId: String)}
+    fun getEmployeeByAge(@Query("age"employeeAge: String): Call<List<Employee>>{
 
+}
+}
 class Factory {
 
     companion object {
