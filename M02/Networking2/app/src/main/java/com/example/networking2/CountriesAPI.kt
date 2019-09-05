@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface CountriesAPI {
-    @GET("/rest/v2/region/Oceania") //last portion of API URL
+    @GET("region/Oceania") //last portion of API URL
     fun getCountries(): Call<OceaniaCountryList>
 
 
