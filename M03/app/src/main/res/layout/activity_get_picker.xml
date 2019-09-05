@@ -6,4 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".GetPicker">
 
+    <Button
+        android:id="@+id/simple_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="198dp"
+        android:layout_marginEnd="149dp"
+        android:text="btn_simple_get"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_get_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="283dp"
+        android:layout_marginEnd="167dp"
+        android:text="Get W/ Path"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_get_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="397dp"
+        android:layout_marginEnd="161dp"
+        android:text="Get W/ Query"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
