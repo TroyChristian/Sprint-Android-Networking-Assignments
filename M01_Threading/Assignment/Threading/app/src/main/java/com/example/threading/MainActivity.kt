@@ -13,7 +13,9 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.app.TaskStackBuilder
 import kotlinx.android.synthetic.main.activity_main.*
-
+ fun add(arg: Int, arg2: Int): Int{
+    return arg + arg2
+}
 class MainActivity : AppCompatActivity() {
 lateinit var process : MyAsyncTask
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +24,7 @@ lateinit var process : MyAsyncTask
         //MyAsyncTask().execute
         process = MyAsyncTask()
         process.execute()
+        add(2,2)
 
     }
 
